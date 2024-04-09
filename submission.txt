@@ -1,0 +1,19 @@
+<?php
+if (isset($_POST['submit'])) {
+    if ($_POST['confirm'] == 'yes') {
+        // Perform action if confirmed
+        echo 'Action performed.';
+    } else {
+        // Redirect or perform another action if not confirmed
+        echo 'Action not performed.';
+    }
+} else {
+    // Display the confirmation form
+    echo '<form action="" method="post">';
+    echo 'Are you sure? <br><br>';
+    echo '<input type="submit" name="submit" value="Yes"> ';
+    echo '<input type="submit" name="submit" value="No"> ';
+    echo '<input type="hidden" name="confirm" value="yes">';
+    echo '</form>';
+}
+?>

@@ -1,0 +1,110 @@
+<html>
+    <head>
+        <style>
+            #my-orders {
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
+#orders-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#orders-table th,
+#orders-table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+#orders-table th {
+  background-color: #eee;
+  font-weight: bold;
+}
+
+#orders-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+#orders-table .status {
+  color: #333;
+  font-weight: bold;
+}
+
+#orders-table .pending {
+  color: orange;
+}
+
+#orders-table .delivered {
+  color: green;
+}
+
+#orders-table .cancelled {
+  color: red;
+}
+
+        </style>
+        </head>
+        <body>
+<div id="my-orders">
+  <h2>My Orders</h2>
+  <table id="orders-table">
+    <thead>
+      <tr>
+        <th>Order ID</th>
+        <th>Restaurant</th>
+        <th>Date</th>
+        <th>Total</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="orders-table-body">
+    </tbody>
+  </table>
+</div>
+<script>
+
+    const orders = [
+  {
+    id: 1,
+    restaurant: "Pizza Palace",
+    date: "2022-12-01",
+    total: "$25.00",
+    status: "pending"
+  },
+  {
+    id: 2,
+    restaurant: "Sushi Central",
+    date: "2022-12-02",
+    total: "$35.00",
+    status: "delivered"
+  },
+  {
+    id: 3,
+    restaurant: "Burger Joint",
+    date: "2022-12-03",
+    total: "$15.00",
+    status: "cancelled"
+  }
+];
+
+const tableBody = document.querySelector("#orders-table-body");
+
+for (const order of orders) {
+  const row = document.createElement("tr");
+  row.innerHTML = `
+    <td>${order.id}</td>
+    <td>${order.restaurant}</td>
+    <td>${order.date}</td>
+    <td>${order.total}</td>
+    <td class="status ${order.status}">${order.status}</td>
+    <td><button class="view-order-button">View Order</button></td>
+  `;
+  tableBody.appendChild(row);
+}
+
+</script>
+</body>
+</html>
